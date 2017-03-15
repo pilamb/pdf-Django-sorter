@@ -21,7 +21,7 @@ When a file is uploaded its capable of extracting, if those methadata exist, the
 - Date when it was created
 - Date if it was modified
 
-Also:
+Also after upload, you can add manually:
 
 - URL, a website realated with the pdf
 - Hash authomatically added when uploaded (md5)
@@ -41,7 +41,7 @@ SECRET_KEY is not shared, you need to create an env var called DJANGO_SECRET_KEY
 
 Its recommended to use virtualenv::
         
-        mkrprogect <give-a-name>
+        mkproject <give-a-name>
 
 Versions::
 
@@ -93,3 +93,4 @@ TODOS
 - It could be extended to use dropbox, owncloud, etc.
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
+- All-auth is installed, it could be used.
