@@ -15,25 +15,18 @@
     {% endif %}
     {% if object.upload_date %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Fecha de subida:  </h3>
+        <h3 class="list-group-item-heading">Upload date:  </h3>
         <p class="list-group-item-text">&nbsp;  {{ object.upload_date }}</p>
       </a>
     {% endif %}
    {% if object.creationdate %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Fecha de creación:  </h3>
+        <h3 class="list-group-item-heading">Creation date:  </h3>
         <p class="list-group-item-text">&nbsp;  {{ object.creationdate }}</p>
       </a>
-    {% endif %} 
-    {% if object.uploader %}
+    {% endif %}  
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Subido por:  </h3>
-        <p class="list-group-item-text">&nbsp;  {{ object.uploader }}</p>
-      </a>
-    {% endif %}
-    
-      <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Con contraseña:&nbsp;&nbsp;</h3>
+        <h3 class="list-group-item-heading">Password:&nbsp;&nbsp;</h3>
         <p class="list-group-item-text"> 
           {% if object.locked %} 
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
@@ -44,20 +37,20 @@
       </a>
     {% if object.author %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Autor:  </h3>
+        <h3 class="list-group-item-heading">Author:  </h3>
         <p class="list-group-item-text">&nbsp;  {{ object.author }}</p>
       </a>
     {% endif %}
     
     {% if object.produced_by %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Organismo:  </h3>
+        <h3 class="list-group-item-heading">From/company:  </h3>
         <p class="list-group-item-text">&nbsp;  {{ object.produced_by }}</p>
       </a>
     {% endif %}
     {% if object.producer %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Organismo:  </h3>
+        <h3 class="list-group-item-heading">Producer:  </h3>
         <p class="list-group-item-text">&nbsp;  {{ object.producer }}</p>
       </a>
     {% endif %}
@@ -75,30 +68,30 @@
     {% endif %}
     {% if object.pages %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Páginas:  </h3>
+        <h3 class="list-group-item-heading">Pages:  </h3>
         <p class="list-group-item-text"> &nbsp; {{ object.pages }}</p>
       </a>
     {% endif %}
     {% if object.size %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Tamaño:  </h3>
+        <h3 class="list-group-item-heading">Size:  </h3>
         <p class="list-group-item-text">&nbsp;{{ object.size|filesizeformat }}</p>
       </a>
     {% endif %}
     {% if object.produced_by %}
       <a class="list-group-item list-group-item-action">
-        <h3 class="list-group-item-heading">Software con el que se hizo:  </h3>
+        <h3 class="list-group-item-heading">Software used:  </h3>
         <p class="list-group-item-text">&nbsp;{{ object.produced_by }}</p>
       </a>
     {% endif %}
     {% if object.file %}
       <a class="list-group-item list-group-item-action" target="_blank"  href="{{object.file.url}}">
         <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
-        <p class="list-group-item-text">  Abrir</p>
+        <p class="list-group-item-text">  Open</p>
       </a>
       <a class="list-group-item list-group-item-action" download="{{object.file}}" href="{{object.file.url}}">
         <span class="glyphicon glyphicon-download-alt"></span>&nbsp;
-        <p class="list-group-item-text">Descarga</p>
+        <p class="list-group-item-text">Download</p>
       </a>
     {% endif %}
 
@@ -117,7 +110,7 @@
 <div class="container-fluid">
         <a class="btn btn-info" href="{% url 'edit_archive' object.pk %}"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
         &nbsp;
-        <a class="btn btn-danger" href="{% url 'delete_archive' object.pk %}"><span class="glyphicon glyphicon-remove"></span> Borrar</a>
+        <a class="btn btn-danger" href="{% url 'delete_archive' object.pk %}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
 </div>
 
 {% endblock content %}
