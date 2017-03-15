@@ -1,0 +1,93 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}pdfToDjango{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Pedro Cordero">
+    {% block css %}
+    <!-- Latest compiled and minified Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen">
+      <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/bootstrap-glyphicons.css' %}">
+      <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    {% endblock %}
+    <!--link rel="shortcut icon" type="do-not-have-one/png" href="{% static 'images/favicon.ico' %}"/-->
+  
+  </head>
+  <body>
+    <div class="m-b-1 container">
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+            &#9776;
+          </button>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+		            <a class="nav-link" href="{% url 'uploadpdf' %}">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'etiquetas' %}">
+                  <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Tags</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'list_uploads' %}">
+                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> See uploads</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'stats'  %}">
+                  <span class="glyphicon glyphicon-indent-left"></span> Stats</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+
+      {% block content %}
+        <p>Upload PDFS to this portal and they will be saved and classified in a postgreSQL database.</p>
+        <p>pdfminer is the module used in the backend to extract the metadata.</p>
+        <p>If an external drive is connected and configured, archives can be deleted from your computer, and can be easily recovered here.</p>
+        <p>A tag system is enabled to navigate through them.</p>
+        <p>It is possible to extend and use Users account, and social auth.</p>
+      {% endblock content %}
+
+    </div> <!-- /container -->
+
+        {% block modal %}{% endblock modal %}
+
+    <!-- Le javascript-->
+    {% block javascript %}
+      <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/project.js' %}"></script>
+      <script src="{% static "tagulous/tagulous.js" %}"></script>
+    {% endblock javascript %}
+  </body>
+
+<div id="footer">
+      <div class="container">
+        <center>
+        <u>pdfToDjango</u>
+        <p class="muted credit">Self.self() 2017.</p>
+        </center>
+      </div>
+</div>
+</html>
+ 

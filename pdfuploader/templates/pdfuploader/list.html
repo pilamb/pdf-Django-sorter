@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <h2><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Last uploaded files</h2>
+  <p>Total: {{ archives|length }} archives uploaded.</p> 
+  <small>Orderd by upload date.</small>
+  <hr>
+  {% if archives %}
+    <br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Author</th>
+          <th>Do</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for arch in archives %}
+      <tr>
+          <td> {{ forloop.counter }}</td>
+          <td> {{ arch.title }} </td>
+          <td> {{ arch.upload_date|date }} </td>
+          <td> {{ arch.author }} </td>
+          <td> 
+            <a href="{% url "archive_detail" arch.id %}"><span class="glyphicon glyphicon-eye-open">  </span>  </a>
+            <a href="{% url "edit_archive" arch.id %}"><span class="glyphicon glyphicon-pencil">  </span>  </a>
+            <a href="{% url "delete_archive" arch.id %}"><span class="glyphicon glyphicon-trash"</span></a>
+          </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>There are no files. Try  <a href="{% url 'uploadpdf' %}">uploading one</a>.  </p>
+  {% endif %}
+  <p><a href="{% url 'home' %}">Home</a></p>
+</div>
+{% endblock content %}

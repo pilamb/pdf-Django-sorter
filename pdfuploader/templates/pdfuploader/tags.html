@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+      <h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags</h2>
+       <p>Used tags and its related archives</p>
+      <hr>
+      {% if etiquetas %}
+        <br>
+        <ul>
+            {% for elem  in etiquetas %}
+            <li>
+                <span class="tag tag-default">{{elem}}</span>  {{elem.count}} archives:
+                <br><br>
+                {% for key, value in ficheros.items %}
+                  {% if elem == key %}
+                      {% for i in value %}
+                        <a href="{% url 'archive_detail' i.pk %}">{{i}}</a><br>
+                      {% endfor %}
+                  {% endif %}
+                {% endfor %}
+            </li>
+            <br>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No labels yet.</p>
+        {% endif %}
+      <p><a href="{% url 'home' %}">Home</a></p>
+    </div>
+{% endblock content %}

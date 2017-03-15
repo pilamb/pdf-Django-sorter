@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+    <p>¿Are you sure you want to delete:"<b> {{ object }} </b>"?</p>
+    <input type="submit" class="btn btn-danger" value="Confirm" />
+    <a href="{% url "list_uploads" %}">Cancel</a>
+</form>
+
+{% endblock %}

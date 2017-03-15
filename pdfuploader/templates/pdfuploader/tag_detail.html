@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+      <h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tag: <span class="tag tag-default">{{slug}}</span></h2>
+      <hr>
+      {% if archives %}
+      <p>There are {{archives.count}} pdfs related with this tag.</p>
+        <ul>
+          {% for elem in archives%}
+            <li>
+                 <a href="{% url 'archive_detail' elem.pk %}">{{elem}}</a> 
+                <br>
+            </li>
+          {% endfor %}
+            <br>
+        </ul>
+      {% else %}
+            <p>No pdfs under this label.</p>
+      {% endif %}
+      <p><a href="{% url 'home' %}">Home</a></p>
+    </div>
+{% endblock content %}

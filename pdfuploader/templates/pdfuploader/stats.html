@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+      <h2><span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span> Stats</h2>
+      <hr>
+      {% if stats_dict %}
+        <br>
+        <ul>
+            {% for elem, value  in stats_dict.items %}
+            <li>
+                {% if elem == "total_archs" %}
+                    Total of files : {{value}}
+                {%endif%}
+                {% if elem == "total_size" %}
+                    Total size : {{value|filesizeformat}}
+                {%endif%}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>There are  {{ archives|length }} pdfs.</p>
+        {% endif %}
+      <p><a href="{% url 'home' %}">Home</a></p>
+    </div>
+{% endblock content %}

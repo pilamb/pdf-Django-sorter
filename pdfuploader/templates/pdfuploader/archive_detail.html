@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+      <h2><span class="glyphicon glyphicon-eye-open"></span> Detalle de fichero {{ object.title }}</h2>
+  </div>
+  <hr>
+<div class="container">
+  <div class="list-group">
+    {% if object.hash_data %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Hash (md5):  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.hash_data }}</p>
+      </a>
+    {% endif %}
+    {% if object.upload_date %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Fecha de subida:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.upload_date }}</p>
+      </a>
+    {% endif %}
+   {% if object.creationdate %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Fecha de creación:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.creationdate }}</p>
+      </a>
+    {% endif %} 
+    {% if object.uploader %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Subido por:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.uploader }}</p>
+      </a>
+    {% endif %}
+    
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Con contraseña:&nbsp;&nbsp;</h3>
+        <p class="list-group-item-text"> 
+          {% if object.locked %} 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
+          {% else %}  
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          {% endif %}
+        </p>
+      </a>
+    {% if object.author %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Autor:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.author }}</p>
+      </a>
+    {% endif %}
+    
+    {% if object.produced_by %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Organismo:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.produced_by }}</p>
+      </a>
+    {% endif %}
+    {% if object.producer %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Organismo:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.producer }}</p>
+      </a>
+    {% endif %}
+    {% if object.creator %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Software:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.creator }}</p>
+      </a>
+    {% endif %}
+    {% if object.url %}
+      <a href="  {{ object.url }}" class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">URL:  </h3>
+        <p class="list-group-item-text">&nbsp;  {{ object.url }}</p>
+      </a>
+    {% endif %}
+    {% if object.pages %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Páginas:  </h3>
+        <p class="list-group-item-text"> &nbsp; {{ object.pages }}</p>
+      </a>
+    {% endif %}
+    {% if object.size %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Tamaño:  </h3>
+        <p class="list-group-item-text">&nbsp;{{ object.size|filesizeformat }}</p>
+      </a>
+    {% endif %}
+    {% if object.produced_by %}
+      <a class="list-group-item list-group-item-action">
+        <h3 class="list-group-item-heading">Software con el que se hizo:  </h3>
+        <p class="list-group-item-text">&nbsp;{{ object.produced_by }}</p>
+      </a>
+    {% endif %}
+    {% if object.file %}
+      <a class="list-group-item list-group-item-action" target="_blank"  href="{{object.file.url}}">
+        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+        <p class="list-group-item-text">  Abrir</p>
+      </a>
+      <a class="list-group-item list-group-item-action" download="{{object.file}}" href="{{object.file.url}}">
+        <span class="glyphicon glyphicon-download-alt"></span>&nbsp;
+        <p class="list-group-item-text">Descarga</p>
+      </a>
+    {% endif %}
+
+  </div> 
+  {% if object.tags %}
+        <h3 class="list-group-item-heading">Tags:  </h3>
+        <p class="list-group-item-text">
+            {% for i in object.tags.all %}
+                <a role="button" class="btn btn-secondary btn-lg" href="{% url 'tag_detail' slug=i.slug %}">{{ i }}
+                </a>
+            {% endfor %}
+        </p>
+    {% endif %}
+</div>
+<br>
+<div class="container-fluid">
+        <a class="btn btn-info" href="{% url 'edit_archive' object.pk %}"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+        &nbsp;
+        <a class="btn btn-danger" href="{% url 'delete_archive' object.pk %}"><span class="glyphicon glyphicon-remove"></span> Borrar</a>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> File upload</h2>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+				    {% if document %}
+    	       	 <ul>
+        	        {% for element in documents %}
+            	        <li><a href="{{ element }}">{{ element.docfile.name }}</a></li>
+               	 	{% endfor %}
+            		</ul>
+        		{% else %}
+                <form action="{% url "uploadpdf" %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      {{ form.as_p }}
+                    <div class="control-group error">
+
+                      <span class="text-danger">
+                          <p class="help-inline text-danger">{{ form.non_field_errors }}</p>
+                          <p class="help-inline text-danger">{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                          <p class="help-inline text-danger">
+                            {{ form.docfile.errors }}
+                            {{ form.docfile }}
+                          </p>
+                      </span>
+                    </div>
+                      <button type="submit" class="btn btn-primary">Upload <span class="glyphicon glyphicon-upload"></span></button>
+                  </div>
+                </form>
+	    		  {% endif %}
+            <!--SCRAPPED DATA-->
+            {% if data_normalized %}
+               <ul>
+                 <p><h1>Extracted metadata: <b> {{ data_normalized.Title }} </b></h1></p>
+                  {% for key, value in data_normalized.items %}
+                      <li>{{ key }}: 
+                        {% if key == "Size" %} 
+                            {{ value|filesizeformat }}  
+                        {% else %} 
+                            {{ value }}
+                        {% endif %}
+                      </li>
+                  {% endfor %}
+                </ul>
+                <a class="btn btn-success" href="{% url 'edit_archive' archive.pk %}">
+                  <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+                <a class="btn btn-info" href="{% url 'archive_detail' archive.pk %}">
+                  <span class="glyphicon glyphicon-eye-open"></span> Details
+                </a>
+            {% endif %}            
+        </div>
+      </div>
+      <p><a href="{% url 'home' %}">Home</a></p>
+    </div> <!-- /container -->
+{% endblock content %}
