@@ -101,3 +101,4 @@ TODOS
 - A second version will generate API REST. Its installed but not used.
 - All-auth is installed, it could be used.
 - Changing the settings an external hard drive could be used.
+- Bulk upload, right now its designed to scrap a file at a time.
