@@ -39,9 +39,13 @@ Install
 
 SECRET_KEY is not shared, you need to create an env var called DJANGO_SECRET_KEY or the app wont work.
 
-Its recommended to use virtualenv::
+Its recommended to use virtualenv, but not a must::
         
         mkproject <give-a-name>
+        
+Work on it, only if you did the previous step::
+
+        workon <the-name-you-gave>
 
 Versions::
 
