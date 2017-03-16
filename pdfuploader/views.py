@@ -128,8 +128,12 @@ def uploadpdf(request):
             archive = form.save(commit=False)
             for key, value in data_normalized.iteritems():
                 if key.lower() in archive_model_fields:
-                    llave = key.lower()
-                    archive.__setattr__(llave, data_normalized[key])
+                      main_key = key.lower()          
+                      if main_key == 'keywords':      
+                          extracted_tags = data_normalized[key].split(";") 
+                          archive.__setattr__('tags', extracted_tags[:5])
+                      else:
+                          archive.__setattr__(main_key, data_normalized[key])
             try:
                 archive.save()
             except IntegrityError:
