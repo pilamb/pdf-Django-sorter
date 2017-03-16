@@ -20,6 +20,7 @@ When a file is uploaded its capable of extracting, if those methadata exist, the
 - Commercial Code
 - Date when it was created
 - Date if it was modified
+- If there are 'keywords', they will be added as tags
 
 Also after upload, you can add manually:
 
@@ -85,6 +86,7 @@ Main stack
 
 * Django
 * Cookiecutter-django
+* django-tagulous
 * Chardet
 * Pdfminer
 * PostgreSQL
@@ -98,3 +100,4 @@ TODOS
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
 - All-auth is installed, it could be used.
+- Changing the settings an external hard drive could be used.
