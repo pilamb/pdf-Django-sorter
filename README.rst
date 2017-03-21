@@ -86,12 +86,11 @@ Main stack
 
 * Django 1.9
 * Cookiecutter-django
-* Django-tagulous
+* Django-tagulous_
+.. _Django-tagulous:  https://github.com/radiac/django-tagulous
 * Chardet
-* Pdfminer_.
-
+* Pdfminer_
 .. _Pdfminer: https://pypi.python.org/pypi/pdfminer/
-
 * PostgreSQL
 * Bootstrap 4.0.1
 
