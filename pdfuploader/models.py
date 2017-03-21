@@ -20,7 +20,7 @@ class Archive(models.Model):
     """
     class Meta:
         #  TODO: unique_together
-        verbose_name = "Archivo"
+        verbose_name = "Archives"
 
     file = models.FileField(upload_to='PDFSuploads/%Y/%m/%d/',
                             validators=[validate_file_ext],
