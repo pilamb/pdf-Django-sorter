@@ -50,13 +50,13 @@ Work on it, only if you did the previous step::
 
 Versions::
 
-        Python 2.7.X y Django>=1.9
+        Python 2.7.X & Django>=1.9
 
 Extra needed modules::
 
         pip install -r requirements.txt
 
-Its mandatory to create a posgres database::
+Its mandatory to create a postgres database::
 
         createdb pdfwarehouse
 
@@ -84,13 +84,16 @@ Where a root user is needed, create one with::
 Main stack
 ----------
 
-* Django
+* Django 1.9
 * Cookiecutter-django
-* django-tagulous
+* Django-tagulous
 * Chardet
-* Pdfminer
+* Pdfminer_.
+
+.. _Pdfminer: https://pypi.python.org/pypi/pdfminer/
+
 * PostgreSQL
-* Bootstrap
+* Bootstrap 4.0.1
 
 
 TODOS
@@ -102,3 +105,4 @@ TODOS
 - All-auth is installed, it could be used.
 - Changing the settings an external hard drive could be used.
 - Bulk upload, right now its designed to scrap a file at a time.
+- Docker?
