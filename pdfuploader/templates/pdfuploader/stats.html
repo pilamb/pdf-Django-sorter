@@ -15,8 +15,12 @@
                 {% if elem == "total_size" %}
                     Total size : {{value|filesizeformat}}
                 {%endif%}
+                {% if elem == "tags" %}
+                    Total of tags : {{ value }}
+                {% endif %}
             </li>
             {% endfor %}
+
         </ul>
         {% else %}
             <p>There are  {{ archives|length }} pdfs.</p>

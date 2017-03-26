@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.views.generic.edit import DeleteView, UpdateView
-from django.core.files.storage import FileSystemStorage
-from django.db.utils import IntegrityError
-from .models import Archive
-from .upload_form import UploadFileForm
+
 from unidecode import unidecode
 import pdfminer
 from pdfminer.pdfparser import PDFParser
@@ -15,6 +8,14 @@ import hashlib
 from time import mktime, strptime
 from datetime import datetime
 import chardet
+
+from django.shortcuts import render
+from django.views.generic.edit import DeleteView, UpdateView
+from django.core.urlresolvers import reverse_lazy, reverse
+# from django.core.files.storage import FileSystemStorage
+from django.db.utils import IntegrityError
+from .upload_form import UploadFileForm
+from .models import Archive
 
 
 def md5_forge_from_file(filename):
@@ -59,9 +60,11 @@ def data_organizer(data):
             if label in element:
                 if label == "CreationDate" or label == "ModDate":
                     if len(data[element]) > 17:  # I know...this is unpythonic xD
-                        organized_data[label] = datetime.fromtimestamp(mktime(strptime(data[element][2:-7], "%Y%m%d%H%M%S")))
+                        organized_data[label] = \
+                                      datetime.fromtimestamp(mktime(strptime(data[element][2:-7], "%Y%m%d%H%M%S")))
                     else:
-                        organized_data[label] = datetime.fromtimestamp(mktime(strptime(data[element][2:-2], "%Y%m%d%H%M%S")))
+                        organized_data[label] = \
+                                      datetime.fromtimestamp(mktime(strptime(data[element][2:-2], "%Y%m%d%H%M%S")))
                 else:
                     organized_data[label] = data[element]
 
@@ -206,11 +209,19 @@ def stats(request):
     Show stats about the number of pdf uploaded, sizes, etc.
     """
     total_size = 0.0  # total size, Mb.
+    cont_tags = 0
     stats_dict = {'total_archs': 0}
     try:
         archives = Archive.objects.all()
     except Archive.DoesNotExist:
         raise Http404("No existen archivos.")
+    try:
+        tags = Archive.tags.tag_model.objects.all()
+        for i in Archive.tags.tag_model.objects.all():
+            cont_tags += i.count
+        stats_dict['tags'] = cont_tags
+    except:
+        pass
     stats_dict['total_archs'] = len(archives)
     for arch in archives:
         total_size += arch.size
@@ -228,8 +239,8 @@ def tags(request):
     for element in etiquetas:
         tagged_archives[element] = Archive.objects.filter(tags=element)
     return render(request, 'pdfuploader/tags.html', {
-                                                    'etiquetas': etiquetas,
-                                                    'ficheros': tagged_archives})
+        'etiquetas': etiquetas,
+        'ficheros': tagged_archives})
 
 
 def tag_detail(request, slug):
@@ -240,7 +251,6 @@ def tag_detail(request, slug):
         archives = Archive.objects.filter(tags=slug)
     except Archive.DoesNotExist:
         archives = None
-    return render(request, 'pdfuploader/tag_detail.html', {
-                                                    'archives': archives,
-                                                    'slug': slug,
-                                                    })
+    return render(request, 'pdfuploader/tag_detail.html',
+                  {'archives': archives,
+                   'slug': slug})
