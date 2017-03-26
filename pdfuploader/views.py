@@ -128,7 +128,7 @@ def uploadpdf(request):
             archive = form.save(commit=False)
             for key, value in data_normalized.iteritems():
                 if key.lower() in archive_model_fields:
-                    main_key = key.lower()          
+                    main_key = key.lower()
                     if main_key == 'keywords':
                         extracted_tags = data_normalized[key].split(";")
                         extracted_tags2 = list()
@@ -139,7 +139,7 @@ def uploadpdf(request):
                         archive.__setattr__('tags', extracted_tags2[:5])
                         # only 5 tags are allowed
                     else:
-                        archive.__setattr__(main_key, data_normalized[key])                    
+                        archive.__setattr__(main_key, data_normalized[key])
             try:
                 archive.save()
             except IntegrityError:
