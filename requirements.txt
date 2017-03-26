@@ -41,15 +41,6 @@ factory-boy==2.7.0
 fake-factory==0.7.2
 fixtures==2.0.0
 flake8==3.0.4
-Flask==0.11.1
-Flask-Babel==0.11.1
-Flask-Gravatar==0.4.2
-Flask-Login==0.3.2
-Flask-Mail==0.9.1
-Flask-Principal==0.4.0
-Flask-Security==1.7.5
-Flask-SQLAlchemy==2.1
-Flask-WTF==0.12
 future==0.15.2
 gunicorn==19.6.0
 html5lib==1.0b3
@@ -93,7 +84,6 @@ pylint==1.6.4
 pylint-common==0.2.2
 pylint-django==0.7.2
 pylint-plugin-utils==0.2.4
-pymongo==3.3.0
 pyPdf==1.13
 pyrsistent==0.11.13
 pytest==3.0.3
@@ -115,7 +105,6 @@ Sphinx==1.4.8
 SQLAlchemy==1.0.14
 sqlparse==0.2.0
 static3==0.7.0
-termcolor==1.1.0
 testscenarios==0.5.0
 testtools==2.0.0
 traceback2==1.4.0
