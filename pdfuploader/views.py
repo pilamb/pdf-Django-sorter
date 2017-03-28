@@ -132,21 +132,30 @@ def uploadpdf(request):
             for key, value in data_normalized.iteritems():
                 if key.lower() in archive_model_fields:
                     main_key = key.lower()
-                    if main_key == 'keywords':
-                        extracted_tags = data_normalized[key].split(";")
+                    if main_key == 'keywords':  # there are keywords in the pdf metadata, lets put them as tags
+                        if ";" in data_normalized[key]:  # lets chop it
+                            extracted_tags = data_normalized[key].split(";")
+                        elif "-" in data_normalized[key]:
+                            extracted_tags = data_normalized[key].split("-")
+                        elif "," in data_normalized[key]:
+                            extracted_tags = data_normalized[key].split(",")
+                        else:
+                            extracted_tags = data_normalized[key].split()
                         extracted_tags2 = list()
-                        for elem in extracted_tags:#remove spaces magic!
-                            if len(elem.rsplit(' ')) > 1:
-                                extracted_tags2.append(elem.strip().replace(" ", "-"))
-                            extracted_tags2.append(elem.strip())
+                        if len(extracted_tags) > 1:
+                            for elem in extracted_tags:
+                                if len(elem.split()) > 1:
+                                    extracted_tags2.append(elem.strip().replace(" ", "-"))
+                                else:
+                                    extracted_tags2.append(elem.strip())
                         archive.__setattr__('tags', extracted_tags2[:5])
                         # only 5 tags are allowed
                     else:
                         archive.__setattr__(main_key, data_normalized[key])
             try:
                 archive.save()
-            except IntegrityError:
-                return HttpResponse("Error: file already in the database (same hash).")
+            except IntegrityError as e:
+                return HttpResponse("Error: file already in the database (same hash), or {}".format(e))
             document = request.FILES
         else:
             data_normalized = {}
@@ -245,12 +254,15 @@ def tags(request):
 
 def tag_detail(request, slug):
     """
-    The archives related to a tag are shown through a tag slug.
+    A view where the archives related to a tag are shown through a tag slug.
     """
     try:
-        archives = Archive.objects.filter(tags=slug)
-    except Archive.DoesNotExist:
+        found_tags = Archive.tags.tag_model.objects.filter(slug=slug.lower())
+        archives = Archive.objects.filter(tags=found_tags)
+    except Archive.DoesNotExist:        
         archives = None
-    return render(request, 'pdfuploader/tag_detail.html',
-                  {'archives': archives,
-                   'slug': slug})
+        found_tags = None
+    return render(request, 'pdfuploader/tag_detail.html', {                         
+                                                    'archives': archives,           
+                                                    'slug': slug,                   
+                                                    })
