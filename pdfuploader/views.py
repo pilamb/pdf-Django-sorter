@@ -27,7 +27,7 @@ def md5_forge_from_file(filename):
     return md5_forge_from_string(data)
 
 
-def md5_forge_from_string(str):
+def md5_forge_from_string(InString):
     """
     request[File] is a IOBuffer and cant be hashed on the fly.
     It needs to be extracted as string, and then hashed separatedly.
@@ -36,7 +36,7 @@ def md5_forge_from_string(str):
     """
     result = ''
     md = hashlib.md5()
-    md.update(str)
+    md.update(InString)
     try:
         result = md.hexdigest()
     except Exception as e:
@@ -102,7 +102,7 @@ def scrap_data(f):
     return_data["hash_data"] = md5_forge_from_string(f.read())
     return_data["Size"] = f.size
     #    if "Title" not in return_data: somepdfs have not title, even when at OS is visible :?
-    return_data["Title"] = str(f).strip(".pdf")
+    return_data["Title"] = str(f).strip(".pdf")  # TODO: chardet here
     return return_data
 
 
@@ -209,7 +209,7 @@ def listArchives(request):
     try:
         archives = Archive.objects.all().order_by('-upload_date')
     except Archive.DoesNotExist:
-        raise Http404("No existen archivos.")
+        raise Http404("There are no files.")
     return render(request, 'pdfuploader/list.html', {'archives': archives})
 
 
@@ -223,7 +223,7 @@ def stats(request):
     try:
         archives = Archive.objects.all()
     except Archive.DoesNotExist:
-        raise Http404("No existen archivos.")
+        raise Http404("There are no files.")
     try:
         tags = Archive.tags.tag_model.objects.all()
         for i in Archive.tags.tag_model.objects.all():
@@ -259,10 +259,10 @@ def tag_detail(request, slug):
     try:
         found_tags = Archive.tags.tag_model.objects.filter(slug=slug.lower())
         archives = Archive.objects.filter(tags=found_tags)
-    except Archive.DoesNotExist:        
+    except Archive.DoesNotExist:
         archives = None
         found_tags = None
-    return render(request, 'pdfuploader/tag_detail.html', {                         
-                                                    'archives': archives,           
-                                                    'slug': slug,                   
+    return render(request, 'pdfuploader/tag_detail.html', {
+                                                    'archives': archives,
+                                                    'slug': slug,
                                                     })
