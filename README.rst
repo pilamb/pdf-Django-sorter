@@ -98,6 +98,7 @@ Main stack
 TODOS
 -----
 
+- Tests
 - It could be extended to use dropbox, owncloud, etc.
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
