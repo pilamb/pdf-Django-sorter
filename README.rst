@@ -85,14 +85,19 @@ Main stack
 ----------
 
 * Django 1.9
+.. _Django: https://www.djangoproject.com/
 * Cookiecutter-django
+.. _Cookiecutter-django: https://github.com/pydanny/cookiecutter-django
 * Django-tagulous_
 .. _Django-tagulous:  https://github.com/radiac/django-tagulous
 * Chardet
+.. _Chardet: https://github.com/chardet/chardet
 * Pdfminer_
 .. _Pdfminer: https://pypi.python.org/pypi/pdfminer/
 * PostgreSQL
+.. _PostgreSQL: https://www.postgresql.org.es/
 * Bootstrap 4.0.1
+.. _Bootstrap: https://getbootstrap.com/
 
 
 TODOS
