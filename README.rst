@@ -84,19 +84,19 @@ Where a root user is needed, create one with::
 Main stack
 ----------
 
-* Django 1.9
+* Django 1.9_
 .. _Django: https://www.djangoproject.com/
-* Cookiecutter-django
+* Cookiecutter-django_
 .. _Cookiecutter-django: https://github.com/pydanny/cookiecutter-django
 * Django-tagulous_
 .. _Django-tagulous:  https://github.com/radiac/django-tagulous
-* Chardet
+* Chardet_
 .. _Chardet: https://github.com/chardet/chardet
 * Pdfminer_
 .. _Pdfminer: https://pypi.python.org/pypi/pdfminer/
-* PostgreSQL
+* PostgreSQL_
 .. _PostgreSQL: https://www.postgresql.org.es/
-* Bootstrap 4.0.1
+* Bootstrap_ 4.0.1
 .. _Bootstrap: https://getbootstrap.com/
 
 
