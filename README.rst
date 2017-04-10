@@ -84,7 +84,7 @@ Where a root user is needed, create one with::
 Main stack
 ----------
 
-* Django 1.9_
+* Django_
 .. _Django: https://www.djangoproject.com/
 * Cookiecutter-django_
 .. _Cookiecutter-django: https://github.com/pydanny/cookiecutter-django
