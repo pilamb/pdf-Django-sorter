@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from unidecode import unidecode
 import pdfminer
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
