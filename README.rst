@@ -25,9 +25,11 @@ When a file is uploaded its capable of extracting, if those methadata exist, the
 Also after upload, you can add manually:
 
 - URL, a website realated with the pdf
-- Hash authomatically added when uploaded (md5)
 - Tags (django-tagulous)
 
+And:
+
+- A hash authomatically added when uploaded (md5)
 
 Basic operations can be achieved: upload a file, delete, edit, listing, and detail of each file, plus tags management.
 Also some satistics of usage can be viewed.
