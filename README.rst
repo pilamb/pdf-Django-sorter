@@ -87,7 +87,7 @@ Screenshots
 
 This is view of a detailed uploaded pdf file.
 
-![Screenshot1](https://raw.githubusercontent.com/pilamb/pdf-Django-sorter/blob/master/DOCS/screenshots/ListViewScreenShot.png)
+![Screenshot1](pdf-Django-sorter/DOCS/screenshots/ListViewScreenShot.png)
 
 Main stack
 ----------
