@@ -82,6 +82,12 @@ Where a root user is needed, create one with::
 
         python manage.py createsuperuser
 
+SCREENSHOT
+----------
+
+This is view of a detailed uploaded pdf file.
+
+![alttext](https://raw.githubusercontent.com/pilamb/pdf-Django-sorter/master/DOCS/screenshots/ListViewScreenShot.png)
 
 Main stack
 ----------
