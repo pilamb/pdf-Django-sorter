@@ -39,7 +39,7 @@ docutils==0.12
 elasticsearch==2.4.0
 enum34==1.1.6
 extras==0.0.3
-factory-boy==2.7.0
+factory-boy==2.11.1
 fake-factory==0.7.2
 fixtures==2.0.0
 flake8==3.0.4
