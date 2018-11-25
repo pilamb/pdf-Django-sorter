@@ -87,11 +87,11 @@ Screenshots
 
 An edit view:
 
-.. image:: ./DOCS/Screenshots/EditView.png
+.. image:: ./DOCS/screenshots/EditView.png
 
 List view with all uploaded files:
 
-.. image:: ./DOCS/Screenshots/ListView.png
+.. image:: ./DOCS/screenshots/ListView.png
 
 A detail view screenshot of an uploaded file:
 
