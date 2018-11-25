@@ -85,12 +85,15 @@ Where a root user is needed, create one with::
 Screenshots
 ----------
 
-This is view of a detailed uploaded pdf file:
+An edit view:
 
+.. image:: ./DOCS/Screenshots/EditView.png
 
-.. image:: ./DOCS/screenshots/ListViewScreenShot.png
+List view with all uploaded files:
 
-An edit screenshot of an uploaded file:
+.. image:: ./DOCS/Screenshots/ListView.png
+
+A detail view screenshot of an uploaded file:
 
 .. image:: ./DOCS/screenshots/EditPDFDetailView.png
 
