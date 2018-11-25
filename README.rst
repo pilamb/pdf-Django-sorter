@@ -91,7 +91,7 @@ An edit view:
 
 List view with all uploaded files:
 
-.. image:: ./DOCS/screenshots/ListView.png
+.. image:: ./DOCS/screenshots/listView.png
 
 A detail view screenshot of an uploaded file:
 
