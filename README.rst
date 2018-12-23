@@ -24,15 +24,15 @@ When a file is uploaded its capable of extracting, if those methadata exist, the
 
 Also after upload, you can add manually:
 
-- URL, a website realated with the pdf
+- URL, a website related with the pdf
 - Tags (django-tagulous)
 
 And:
 
-- A hash authomatically added when uploaded (md5)
+- A hash automatically added when uploaded (md5)
 
 Basic operations can be achieved: upload a file, delete, edit, listing, and detail of each file, plus tags management.
-Also some satistics of usage can be viewed.
+Also some statistics of usage can be viewed.
 
 Finally it is stored at a Postgres database called 'pdfwarehouse'.
 
@@ -46,7 +46,7 @@ Its recommended to use virtualenv, but not a must::
         
         mkproject <give-a-name>
         
-Work on it, only if you did the previous step::
+Work on it, only if you did the previous step (virtualenvwrapper is needed)::
 
         workon <the-name-you-gave>
 
@@ -125,7 +125,8 @@ Main stack
 TODOS
 -----
 
-- Tests
+- Full compatibility with Python3.X
+- Tests, tests and tests.
 - It could be extended to use dropbox, owncloud, etc.
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
