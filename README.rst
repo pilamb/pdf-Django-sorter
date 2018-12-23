@@ -97,6 +97,11 @@ A detail view screenshot of an uploaded file:
 
 .. image:: ./DOCS/screenshots/EditPDFDetailView.png
 
+The site offers an admin backoffice for administrative tasks such us users, permissions,
+management of tasks or uploaded files. Following up an example of the view of
+an uploaded file:
+
+.. image:: ./DOCS/screenshots/admin_example.png
 
 Main stack
 ----------
