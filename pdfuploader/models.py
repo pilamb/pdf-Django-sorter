@@ -11,16 +11,14 @@ from tagulous.models import TagField
 class Archive(models.Model):
     """
     Represents an archive uploaded to the website. Its fields will be scrapped.
-    First design is inteded to be with only pdfs
-    Represents an archive uploaded to the website. Its fields will be scrapped.
-    First design is inteded to be with only pdfs.
-    Why there are produder, produced_by and creator?
-    Some pdfs did have these different properties and to catch all them this 
+    First design is intended to be with only PDFs.
+    Why there are producer, produced_by and creator?
+    Some PDFs did have these different properties and to catch all them this
     fields are required.
     """
     class Meta:
         #  TODO: unique_together
-        verbose_name = "Archives"
+        verbose_name = "Archive"
 
     file = models.FileField(upload_to='PDFSuploads/%Y/%m/%d/',
                             validators=[validate_file_ext],
@@ -54,8 +52,9 @@ class Archive(models.Model):
     tags = tagulous.models.TagField(  # Tag system
                                 get_absolute_url=lambda tag:
                                 reverse(
-                                        'pdfuploader.views.by_tag', kwargs={'tag_slug': tag.slug}
-                                       ),
+                                    'pdfuploader.views.by_tag',
+                                    kwargs={'tag_slug': tag.slug}
+                                ),
                                 verbose_name="Tags",
                                 blank=True,
                                 force_lowercase=True,

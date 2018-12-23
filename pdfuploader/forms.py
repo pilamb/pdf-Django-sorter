@@ -3,7 +3,7 @@ from django import forms
 from .models import Archive
 
 
-class uploadArchiveForm(forms.Form):
+class UploadArchiveForm(forms.Form):
     """View for handling PDFs upload, decoupling it from the view"""
     file = forms.FileField()
 

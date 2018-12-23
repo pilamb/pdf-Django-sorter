@@ -17,7 +17,6 @@ class UploadFileForm(ModelForm):
             'tags', 'hash_data', 'author', 'produced_by', 'url', 'pages',
             'size', 'isbn', 'creator', 'producer']
 
-
     def __init__(self, *args, **kwargs):
         self.title = kwargs.pop('title', None)
         super(UploadFileForm, self).__init__(*args, **kwargs)
