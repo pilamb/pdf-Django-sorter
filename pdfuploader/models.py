@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.db import models
-from django.core.urlresolvers import reverse
-from .validators import validate_file_ext
-#  TODO: from django.utils.encoding import python_2_unicode_compatible
 import tagulous
 from tagulous.models import TagField
+
+from django.core.urlresolvers import reverse
+from django.db import models
+from .validators import validate_file_ext
+#  TODO: from django.utils.encoding import python_2_unicode_compatible
 
 
 class Archive(models.Model):
@@ -18,7 +19,8 @@ class Archive(models.Model):
     """
     class Meta:
         #  TODO: unique_together
-        verbose_name = "Archive"
+        verbose_name = "archive"
+        verbose_name_plural = "archives"
 
     file = models.FileField(upload_to='PDFSuploads/%Y/%m/%d/',
                             validators=[validate_file_ext],
