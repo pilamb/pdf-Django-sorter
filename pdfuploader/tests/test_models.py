@@ -39,3 +39,7 @@ class ArchiveModelsTestCase(TestCase):
         with self.assertRaises(IntegrityError):
             repeated_hash_archive = Archive.objects.create(hash_data="0123ABC")
             repeated_hash_archive.save()
+
+
+if __name__ == '__main__':
+      unittest.main()

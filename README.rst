@@ -54,10 +54,11 @@ Versions::
 
         Python 2.7.X & Django>=1.9
 
-Extra needed modules::
+Modules needed::
 
-        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
 
+        pip install -r requirements-dev.txt         For DEV purposes.
 Its mandatory to create a postgres database::
 
         createdb pdfwarehouse
@@ -81,6 +82,11 @@ Access the admin at::
 Where a root user is needed, create one with::
 
         python manage.py createsuperuser
+
+Run tests::
+
+        tox
+
 
 Screenshots
 ----------
@@ -126,11 +132,12 @@ TODOS
 -----
 
 - Full compatibility with Python3.X
-- Tests, tests and tests.
+- Tests, tests and tests -> there is a "tests branch" and Tox enabled.
 - It could be extended to use dropbox, owncloud, etc.
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
 - All-auth is installed, it could be used.
+- User app is intalled but not ussed (it's opened as an issue as well)
 - Changing the settings an external hard drive could be used.
 - Bulk upload, right now its designed to scrap a file at a time.
 - Docker?
