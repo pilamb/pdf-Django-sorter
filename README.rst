@@ -56,7 +56,7 @@ Versions::
 
 Modules needed::
 
-        pip install -r requirements-dev.txt
+        pip install -r requirements.txt
 
         pip install -r requirements-dev.txt         For DEV purposes.
 Its mandatory to create a postgres database::
@@ -83,10 +83,17 @@ Where a root user is needed, create one with::
 
         python manage.py createsuperuser
 
-Run tests::
+Run tests with::
 
-        tox
+        tox     (the check-pip-reqs can be ignored)
+Or::
 
+        python manage.py test pdfuploader
+
+Coverage::
+
+    coverage run --source="." manage.py test pdfuploader
+    coverage report
 
 Screenshots
 ----------
@@ -132,7 +139,7 @@ TODOS
 -----
 
 - Full compatibility with Python3.X
-- Tests, tests and tests -> there is a "tests branch" and Tox enabled.
+- Tests, tests and tests -> Doing it. There is a "tests branch" and Tox enabled.
 - It could be extended to use dropbox, owncloud, etc.
 - Some not-unicode, not-latin might make the unicode detection fail.
 - A second version will generate API REST. Its installed but not used.
