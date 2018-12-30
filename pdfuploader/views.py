@@ -1,18 +1,21 @@
 # -*- coding: utf-8 -*-
 
+import chardet
+import hashlib
+from datetime import datetime
+from time import mktime, strptime
+
 import pdfminer
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
-import hashlib
-from time import mktime, strptime
-from datetime import datetime
-import chardet
 
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.views.generic.edit import DeleteView, UpdateView
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.core.urlresolvers import reverse_lazy
 # from django.core.files.storage import FileSystemStorage
 from django.db.utils import IntegrityError
+
 from .upload_form import UploadFileForm
 from .models import Archive
 
@@ -29,7 +32,7 @@ def md5_forge_from_file(filename):
 def md5_forge_from_string(InString):
     """
     request[File] is a IOBuffer and cant be hashed on the fly.
-    It needs to be extracted as string, and then hashed separatedly.
+    It needs to be extracted as string, and then hashed separately.
     @params: str
     @Return: result as a md5 hash or Exception.
     """
@@ -87,10 +90,10 @@ def scrap_data(f):
     doc = PDFDocument(parser)
     if doc.info != "":
         for i in doc.info:
-            for j, k in i.iteritems():
+            for j, k in i.iteritems():  # TODO: no py3!
                 if j != '' and k != '':
-                    if j == "Trapped":
-                        if isinstance(k, pdfminer.psparser.PSLiteral):  # PDFparser uses a strange type kind
+                    if j == "Trapped":  # PDF parser uses a strange type kind
+                        if isinstance(k, pdfminer.psparser.PSLiteral):
                             k = str(k)
                     else:
                         if isinstance(k, str):
@@ -100,7 +103,7 @@ def scrap_data(f):
         return_data = None
     return_data["hash_data"] = md5_forge_from_string(f.read())
     return_data["Size"] = f.size
-    #    if "Title" not in return_data: somepdfs have not title, even when at OS is visible :?
+    # if "Title" not in return_data: somepdfs have not title, even if visible
     return_data["Title"] = str(f).strip(".pdf")  # TODO: chardet here
     return return_data
 
@@ -131,7 +134,8 @@ def uploadpdf(request):
             for key, value in data_normalized.iteritems():
                 if key.lower() in archive_model_fields:
                     main_key = key.lower()
-                    if main_key == 'keywords':  # there are keywords in the pdf metadata, lets put them as tags
+                    # there are kws in the pdf metadata, lets put them as tags
+                    if main_key == 'keywords':
                         if ";" in data_normalized[key]:  # lets chop it
                             extracted_tags = data_normalized[key].split(";")
                         elif "-" in data_normalized[key]:
@@ -173,32 +177,6 @@ def uploadpdf(request):
                                                        archive,
                                                        'data_normalized':
                                                        data_normalized})
-
-
-def detail(request, archive_id):
-    """
-    Detail of each archive uploaded.
-    """
-    return render(request, 'pd fuploader/detail.html')
-
-
-class ArchiveDelete(DeleteView):
-    """
-    Delete view
-    """
-    model = Archive
-    success_url = reverse_lazy('list_uploads')
-
-
-class ArchiveUpdate(UpdateView):
-    """
-    View for editing.
-    """
-    model = Archive
-    fields = ['title', 'url', 'tags', 'locked', 'produced_by', 'author', 'producer', 'creator']
-    exclude = ('file', 'hash', 'creationdate', )
-    template_name = 'pdfuploader/edit_archive.html'
-    success_url = reverse_lazy('list_uploads')
 
 
 def listArchives(request):
@@ -265,3 +243,23 @@ def tag_detail(request, slug):
                                                     'archives': archives,
                                                     'slug': slug,
                                                     })
+
+
+class ArchiveDelete(DeleteView):
+    """
+    Delete view
+    """
+    model = Archive
+    success_url = reverse_lazy('list_uploads')
+
+
+class ArchiveUpdate(UpdateView):
+    """
+    View for editing.
+    """
+    model = Archive
+    fields = ['title', 'url', 'tags', 'locked', 'produced_by',
+              'author', 'producer', 'creator']
+    exclude = ('file', 'hash', 'creationdate', )
+    template_name = 'pdfuploader/edit_archive.html'
+    success_url = reverse_lazy('list_uploads')
