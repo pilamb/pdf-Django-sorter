@@ -21,7 +21,7 @@ django-braces==1.9.0
 django-crispy-forms==1.6.1
 django-environ==0.4.0
 django-extensions==1.7.4
-django-htmlmin==0.8.0
+django-htmlmin==0.10.0
 django-model-utils==2.6
 django-rest-swagger==2.0.7
 django-tagulous==0.11.1
