@@ -60,7 +60,7 @@ def data_organizer(data):
         for label in labels:
             if label in element:
                 if label == "CreationDate" or label == "ModDate":
-                    if len(data[element]) > 17:  # I know...this is unpythonic xD
+                    if len(data[element]) > 17:  # TODO: unpythonic!!!
                         organized_data[label] = \
                                       datetime.fromtimestamp(mktime(strptime(data[element][2:-7], "%Y%m%d%H%M%S")))
                     else:
@@ -114,9 +114,9 @@ def uploadpdf(request):
     """
     archive = None
 
-    archive_model_fields = [
-        'hash_data', 'isbn', 'pages', 'size', 'keywords', 'url', 'uploader', 'locked',
-        'producer', 'author', 'creationdate', 'title', 'creator']  # count: 12
+    archive_model_fields = [ # Total: 12
+        'hash_data', 'isbn', 'pages', 'size', 'keywords', 'url', 'uploader',
+        'locked', 'producer', 'author', 'creationdate', 'title', 'creator']
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -124,7 +124,8 @@ def uploadpdf(request):
                 scrapped_data = scrap_data(request.FILES['file'])
             except pdfminer.pdftypes.PDFException:
                 return HttpResponse(
-                    "Ciphered metadata. Sorry but can't be extracted. Try with another or clean the metadata.")
+                    "Ciphered metadata. Sorry but can't be extracted. "
+                    "Try with another or clean the metadata.")
             if scrapped_data is not None:
                 data_normalized = data_organizer(scrapped_data)
             else:
@@ -157,7 +158,9 @@ def uploadpdf(request):
             try:
                 archive.save()
             except IntegrityError as e:
-                return HttpResponse("Error: file already in the database (same hash), or {}".format(e))
+                return HttpResponse("Error: file already in the database "
+                                    "(same hash), or {}".format(e)
+                                    )
             document = request.FILES
         else:
             data_normalized = {}
@@ -168,14 +171,15 @@ def uploadpdf(request):
         scrapped_data = {}
         data_normalized = {}
         form = UploadFileForm()
-    return render(request, 'pdfuploader/upload.html', {'form':
-                                                       form,
-                                                       'document':
-                                                       document,
-                                                       'archive':
-                                                       archive,
-                                                       'data_normalized':
-                                                       data_normalized})
+    return render(
+        request,
+        'pdfuploader/upload.html', {
+            'form': form,
+            'document': document,
+            'archive': archive,
+            'data_normalized': data_normalized
+        }
+    )
 
 
 def listArchives(request):
