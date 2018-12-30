@@ -1,5 +1,6 @@
 [run]
 include = pdfwarehouse/*
+include = pdfuploader/*
 omit = *migrations*, *tests*
 plugins =
     django_coverage_plugin
