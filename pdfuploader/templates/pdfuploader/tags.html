@@ -5,14 +5,14 @@
       <h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags</h2>
        <p>Used tags and its related archives</p>
       <hr>
-      {% if etiquetas %}
+      {% if found_labels %}
         <br>
         <ul>
-            {% for elem  in etiquetas %}
+            {% for elem  in found_labels %}
             <li>
                 <span class="tag tag-default">{{elem}}</span>  {{elem.count}} archives:
                 <br><br>
-                {% for key, value in ficheros.items %}
+                {% for key, value in tagged_archives.items %}
                   {% if elem == key %}
                       {% for i in value %}
                         <a href="{% url 'archive_detail' i.pk %}">{{i}}</a><br>
