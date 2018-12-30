@@ -1,6 +1,6 @@
-Update: all
-Search: True
-Schedule: "every week"
+update: all
+search: True
+schedule: "every week"
 requirements:
   - requirements.txt:
       # update all dependencies and pin them
@@ -12,6 +12,4 @@ requirements:
 Pin: True
 Default Branch: dev
 Branch pre-fix: pyup-reqsupdate/
-Close PRs: True
-Label PRs: False
-Update hashes: True
+close_prs: True
