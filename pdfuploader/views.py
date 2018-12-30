@@ -1,32 +1,23 @@
 # -*- coding: utf-8 -*-
 
 import chardet
-import hashlib
 from datetime import datetime
+import hashlib
 from time import mktime, strptime
 
 import pdfminer
-from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
+from pdfminer.pdfparser import PDFParser
 
-from django.http import Http404, HttpResponse
-from django.shortcuts import render
-from django.views.generic.edit import DeleteView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 # from django.core.files.storage import FileSystemStorage
 from django.db.utils import IntegrityError
+from django.http import Http404, HttpResponse
+from django.shortcuts import render
+from django.views.generic.edit import DeleteView, UpdateView
 
 from .upload_form import UploadFileForm
 from .models import Archive
-
-
-def md5_forge_from_file(filename):
-    """
-    Prepares file to be hashed as a byte_string.
-    """
-    with open(filename, 'rb') as destination:
-        data = destination.read()
-    return md5_forge_from_string(data)
 
 
 def md5_forge_from_string(InString):
@@ -36,7 +27,6 @@ def md5_forge_from_string(InString):
     @params: str
     @Return: result as a md5 hash or Exception.
     """
-    result = ''
     md = hashlib.md5()
     md.update(InString)
     try:
@@ -44,6 +34,15 @@ def md5_forge_from_string(InString):
     except Exception as e:
         return HttpResponse("Bad forging md5, {} error...try again.", e)
     return result
+
+
+def md5_forge_from_file(filename):
+    """
+    Prepares file to be hashed as a byte_string.
+    """
+    with open(filename, 'rb') as destination:
+        data = destination.read()
+    return md5_forge_from_string(data)
 
 
 def data_organizer(data):
@@ -220,13 +219,13 @@ def tags(request):
     Shows tags and its use counter,
     and the archives with those tags.
     """
-    etiquetas = Archive.tags.tag_model.objects.all()
+    found_labels = Archive.tags.tag_model.objects.all()
     tagged_archives = {}
-    for element in etiquetas:
+    for element in found_labels:
         tagged_archives[element] = Archive.objects.filter(tags=element)
     return render(request, 'pdfuploader/tags.html', {
-        'etiquetas': etiquetas,
-        'ficheros': tagged_archives})
+        'found_labels': found_labels,
+        'tagged_archives': tagged_archives})
 
 
 def tag_detail(request, slug):
@@ -247,7 +246,7 @@ def tag_detail(request, slug):
 
 class ArchiveDelete(DeleteView):
     """
-    Delete view
+    Delete the archive view
     """
     model = Archive
     success_url = reverse_lazy('list_uploads')
@@ -255,7 +254,7 @@ class ArchiveDelete(DeleteView):
 
 class ArchiveUpdate(UpdateView):
     """
-    View for editing.
+    View for editing an archive.
     """
     model = Archive
     fields = ['title', 'url', 'tags', 'locked', 'produced_by',
