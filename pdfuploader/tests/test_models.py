@@ -21,6 +21,9 @@ class ArchiveModelsTestCase(TestCase):
         self.defective_archive = Archive.objects.create(title="")
         self.defective_archive.save()
 
+    def test_creation(self):
+        self.assertTrue(Archive.objects.count(), 2)
+
     def test_str_representation(self):
         self.assertEqual(str(self.archive_1),
                          self.archive_1.title)
