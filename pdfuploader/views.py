@@ -107,7 +107,7 @@ def scrap_data(f):
     return return_data
 
 
-def uploadpdf(request):
+def upload_archive(request):
     """ View controlling update of files. It is also responsible for
     calling methods to extract the pdf metadata and to call the normalizing
     functions that make the normalization of the model fields.
@@ -182,7 +182,7 @@ def uploadpdf(request):
     )
 
 
-def listArchives(request):
+def list_archives(request):
     """
     View for listing archives.
     """
