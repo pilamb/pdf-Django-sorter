@@ -20,7 +20,7 @@ from .upload_form import UploadFileForm
 from .models import Archive
 
 
-def md5_forge_from_string(InString):
+def md5_forge_from_string(in_string):
     """
     request[File] is a IOBuffer and cant be hashed on the fly.
     It needs to be extracted as string, and then hashed separately.
@@ -28,7 +28,7 @@ def md5_forge_from_string(InString):
     @Return: result as a md5 hash or Exception.
     """
     md = hashlib.md5()
-    md.update(InString)
+    md.update(in_string)
     try:
         result = md.hexdigest()
     except Exception as e:
@@ -202,15 +202,12 @@ def stats(request):
     stats_dict = {'total_archs': 0}
     try:
         archives = Archive.objects.all()
-    except Archive.DoesNotExist:
-        raise Http404("There are no files.")
-    try:
         tags = Archive.tags.tag_model.objects.all()
         for i in Archive.tags.tag_model.objects.all():
             cont_tags += i.count
         stats_dict['tags'] = cont_tags
-    except:
-        pass
+    except Archive.DoesNotExist:
+        raise Http404("There are no files.")
     stats_dict['total_archs'] = len(archives)
     for arch in archives:
         total_size += arch.size
@@ -220,8 +217,7 @@ def stats(request):
 
 def tags(request):
     """
-    Shows tags and its use counter,
-    and the archives with those tags.
+    Shows tags and its use counter, and the archives with those tags.
     """
     found_labels = Archive.tags.tag_model.objects.all()
     tagged_archives = {}
@@ -261,8 +257,8 @@ class ArchiveUpdate(UpdateView):
     View for editing an archive.
     """
     model = Archive
-    fields = ['title', 'url', 'tags', 'locked', 'produced_by',
-              'author', 'producer', 'creator']
+    fields = ['title', 'url', 'tags', 'locked', 'produced_by', 'author',
+              'producer', 'creator']
     exclude = ('file', 'hash', 'creationdate', )
     template_name = 'pdfuploader/edit_archive.html'
     success_url = reverse_lazy('list_uploads')
