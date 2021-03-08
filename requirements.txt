@@ -73,7 +73,7 @@ sqlparse==0.4.1
 toml==0.10.2
 traceback2==1.4.0
 traitlets==5.0.5
-Unidecode==0.4.19
+Unidecode==1.2.0
 uritemplate==3.0.0
 urllib3==1.18
 virtualenv==16.1.0
