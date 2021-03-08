@@ -58,7 +58,7 @@ pyparsing==2.4.7
 pyPdf==1.13
 pyrsistent==0.17.3
 python-dateutil==2.8.1
-python-mimeparse==1.5.1
+python-mimeparse==1.6.0
 python-openid==2.2.5
 regex==2016.10.22
 requests==2.11.1
