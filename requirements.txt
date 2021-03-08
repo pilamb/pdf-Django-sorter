@@ -43,7 +43,7 @@ pathlib2==2.3.5
 pbr==5.5.1
 pdfminer==20191125
 pexpect==4.8.0
-pickleshare==0.7.4
+pickleshare==0.7.5
 Pillow==3.4.2
 pluggy==0.8.0
 poyo==0.4.0
