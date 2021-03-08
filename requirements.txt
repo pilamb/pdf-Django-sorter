@@ -65,7 +65,7 @@ requests==2.25.1
 requests-oauthlib==1.3.0
 simplegeneric==0.8.1
 simplejson==3.17.2
-singledispatch==3.4.0.3
+singledispatch==3.6.1
 snowballstemmer==1.2.1
 speaklater==1.3
 Sphinx==1.4.8
