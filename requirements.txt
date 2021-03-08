@@ -45,7 +45,7 @@ pdfminer==20191125
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==8.1.2
-pluggy==0.8.0
+pluggy==0.13.1
 poyo==0.4.0
 prompt-toolkit==1.0.8
 psycopg2==2.6.2
