@@ -41,7 +41,7 @@ packaging==20.9
 passlib==1.7.4
 pathlib2==2.3.5
 pbr==5.5.1
-pdfminer==20140328
+pdfminer==20191125
 pexpect==4.2.1
 pickleshare==0.7.4
 Pillow==3.4.2
