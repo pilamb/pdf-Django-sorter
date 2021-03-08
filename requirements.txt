@@ -23,7 +23,7 @@ django-rest-swagger==2.2.0
 django-tagulous-0.13.2
 django-tools==0.48.3
 docutils==0.16
-extras==0.0.3
+extras==1.0.0
 filelock==3.0.10
 future==0.16
 html5lib==1.0b3
