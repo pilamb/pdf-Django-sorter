@@ -11,7 +11,7 @@ django-debug-toolbar==3.2
 django-test-plus==1.4.0
 django-toolbelt==0.0.1
 enum34==1.1.10
-factory-boy==2.7.0
+factory-boy==3.2.0
 fake-factory==0.7.2
 Flask-Babel==0.11.1
 Flask-Gravatar==0.4.2
