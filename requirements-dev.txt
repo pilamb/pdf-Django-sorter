@@ -25,7 +25,7 @@ fixtures==3.0.0
 flake8==3.8.4
 ipdb==0.13.5
 isort==5.7.0
-itsdangerous==0.24
+itsdangerous==1.1.0
 Jinja2==2.7.3
 lazy-object-proxy==1.2.2
 MarkupSafe==0.23
