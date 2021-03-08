@@ -13,7 +13,7 @@ django-toolbelt==0.0.1
 enum34==1.1.10
 factory-boy==3.2.0
 fake-factory==9999.9.9
-Flask-Babel==0.11.1
+Flask-Babel==2.0.0
 Flask-Gravatar==0.4.2
 Flask-Login==0.3.2
 Flask-Mail==0.9.1
