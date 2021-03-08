@@ -8,7 +8,7 @@ binaryornot==0.4.4
 blinker==1.4
 chardet==4.0.0
 click==7.1.2
-coreapi==2.0.8
+coreapi==2.3.3
 decorator==4.0.10
 dj-database-url==0.4.1
 dj-static==0.0.6
