@@ -38,7 +38,7 @@ pylint-django==2.4.2
 pylint-plugin-utils==0.6
 pytest==6.2.2
 pytest-django==4.1.0
-pytest-sugar==0.7.1
+pytest-sugar==0.9.4
 pytz==2014.10
 six==1.9.0
 SQLALchemy==1.0.14
