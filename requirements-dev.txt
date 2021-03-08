@@ -37,7 +37,7 @@ pylint-common==0.2.5
 pylint-django==2.4.2
 pylint-plugin-utils==0.6
 pytest==6.2.2
-pytest-django==3.0.0
+pytest-django==4.1.0
 pytest-sugar==0.7.1
 pytz==2014.10
 six==1.9.0
