@@ -48,4 +48,4 @@ tox==3.23.0
 unittest2==1.1.0
 werkzeug==1.0.1
 WTForms==2.3.3
-wrapt==1.10.11
+wrapt==1.12.1
