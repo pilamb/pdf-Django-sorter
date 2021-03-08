@@ -29,7 +29,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 lazy-object-proxy==1.5.2
 MarkupSafe==1.1.1
-mccabe==0.6.0
+mccabe==0.6.1
 pip-check-reqs==2.0.3
 pyflakes==1.2.3
 pylint==1.9.4
