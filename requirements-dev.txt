@@ -27,7 +27,7 @@ ipdb==0.13.5
 isort==5.7.0
 itsdangerous==1.1.0
 Jinja2==2.11.3
-lazy-object-proxy==1.2.2
+lazy-object-proxy==1.5.2
 MarkupSafe==0.23
 mccabe==0.6.0
 pip-check-reqs==2.0.3
