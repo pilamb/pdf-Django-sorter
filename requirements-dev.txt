@@ -31,7 +31,7 @@ lazy-object-proxy==1.5.2
 MarkupSafe==1.1.1
 mccabe==0.6.1
 pip-check-reqs==2.1.1
-pyflakes==1.2.3
+pyflakes==2.2.0
 pylint==1.9.4
 pylint-common==0.2.2
 pylint-django==0.7.2
