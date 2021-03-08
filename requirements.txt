@@ -54,7 +54,7 @@ py==1.10.0
 pycodestyle==2.6.0
 pycrypto==2.6.1
 Pygments==2.8.1
-pyparsing==2.2.0
+pyparsing==2.4.7
 pyPdf==1.13
 pyrsistent==0.11.13
 python-dateutil==2.5.0
