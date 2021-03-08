@@ -25,7 +25,7 @@ django-tools==0.48.3
 docutils==0.16
 extras==1.0.0
 filelock==3.0.12
-future==0.16
+future==0.18.2
 html5lib==1.0b3
 imagesize==0.7.1
 importlib==1.0.3
